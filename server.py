@@ -138,10 +138,10 @@ class Server:
 
 
 @click.command()
-@click.argument("host", type=click.STRING)
-@click.argument("port", type=click.INT)
-def main(host: str, port: int):
-    server = Server(host, port)
+@click.option('--host', "host_address", type=click.STRING, default="localhost", help='Host address', prompt=True)
+@click.option('--port', "host_port", type=click.INT, default=5555, help='Host port', prompt=True)
+def main(host_address: str, host_port: int):
+    server = Server(host_address, host_port)
     asyncio.run(server.run())
 
 
